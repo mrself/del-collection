@@ -54,7 +54,7 @@ $.extend(Collection.prototype, $.Del, {
 		return items;
 	},
 
-	has: function(el) {
+	find: function(el) {
 		var isJQuery = el instanceof $;
 		return this.filter(function(item) {
 			if (isJQuery) return !!item.$el.find(el).length;
@@ -62,8 +62,8 @@ $.extend(Collection.prototype, $.Del, {
 		});
 	},
 
-	hasOne: function(el) {
-		var items = this.has(el);
+	findOne: function(el) {
+		var items = this.find(el);
 		if (items.length) return items[0];
 		return null;
 	}

@@ -35,7 +35,7 @@ describe('Collection', function() {
 	it('extend', function() {
 		assert(typeof MyCollection.make == 'function');
 		assert(typeof MyCollection.extend == 'function');
-		assert(typeof MyCollection.prototype.has == 'function');
+		assert(typeof MyCollection.prototype.find == 'function');
 	});
 
 	it('init', function() {
@@ -64,25 +64,25 @@ describe('Collection', function() {
 		assert(items.length === 1 && items[0].$el[0] === $el[0]);
 	});
 
-	it('has', function() {
+	it('find', function() {
 		var collection = getCollection();
 		var $el = collection._itemsEl.eq(4);
 		var $subEl = $('<div />', {
 			"class": 'subEl'
 		});
 		$el.append($subEl);
-		var items = collection.has($subEl);
+		var items = collection.find($subEl);
 		assert(items.length === 1 && items[0].$el[0] === $el[0]);
 	});
 
-	it('hasOne', function() {
+	it('findOne', function() {
 		var collection = getCollection();
 		var $el = collection._itemsEl.eq(4);
 		var $subEl = $('<div />', {
 			"class": 'subEl'
 		});
 		$el.append($subEl);
-		var item = collection.hasOne($subEl[0]);
+		var item = collection.findOne($subEl[0]);
 		assert(item.$el[0] === $el[0]);
 	});
 
