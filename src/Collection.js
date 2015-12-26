@@ -68,7 +68,8 @@ $.extend(Collection.prototype, $.Del, {
 		return null;
 	}
 });
-Collection.make = function($el, dName) {
+Collection.make = function($el, dName, _class) {
+	_class = _class || Collection;
 	var collection = new Collection();
 	collection.$el = $el;
 	collection.dName = dName;

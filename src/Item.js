@@ -20,6 +20,7 @@ $.extend(Item.prototype, $.Del, {
 
 
 Item.make = function(el, dName, _class) {
+	_class = _class || Item;
 	var item = new _class();
 	item.el = el;
 	item.$el = $(el);
