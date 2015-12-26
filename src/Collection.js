@@ -70,7 +70,7 @@ $.extend(Collection.prototype, $.Del, {
 });
 Collection.make = function($el, dName, _class) {
 	_class = _class || Collection;
-	var collection = new Collection();
+	var collection = new _class();
 	collection.$el = $el;
 	collection.dName = dName;
 	return collection;
