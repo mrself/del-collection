@@ -131,6 +131,11 @@ describe('Item', function() {
 	it('make', function() {
 		var item = getItem();
 		assert(item.$el.length);
+	});
 
+	it('makeFromHtml', function() {
+		var Item = getItemClass();
+		var item = Item.makeFromHtml('<div class="item"></div>', 'item', Item);
+		assert(item.$el.hasClass('item'));
 	});
 });
