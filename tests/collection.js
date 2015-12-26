@@ -1,0 +1,1 @@
+window.Collection = require('../src/Collection');
