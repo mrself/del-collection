@@ -29,7 +29,9 @@ $.extend(Collection.prototype, $.Del, {
 	},
 
 	push: function(el) {
-		this.add(this.make(el));
+		var item = this.make(el);
+		this._itemsEl = this._itemsEl.add(item.$el);
+		this.add(item);
 	},
 
 	get: function(id) {
