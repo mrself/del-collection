@@ -12,10 +12,10 @@ $.extend(Collection.prototype, $.Del, {
 		this._dName = options.dName;
 		this._Item = options.itemClass || Item;
 		this._items = {};
-		this._itemsEl = (options.$el || this.$el.find('.' + this._dName))
-							.each(function() {
-								self.push(this);
-							});
+		this._itemsEl = options.$el || this.$el.find('.' + this._dName);
+		this._itemsEl.each(function() {
+			self.push(this);
+		});
 	},
 
 	make: function(el) {
@@ -24,12 +24,21 @@ $.extend(Collection.prototype, $.Del, {
 		return item;
 	},
 
+	push: function(el) {
+		var item = this.make(el);
+		this.add(item);
+		return item;
+	},
+
 	add: function(item) {
+		this._itemsEl = this._itemsEl.add(item.$el);
 		this._items[item.getId()] = item;
 	},
 
-	push: function(el) {
-		this.add(this.make(el));
+	pushHtml: function(html) {
+		var item = this.makeFromHtml(html);
+		this.add(item);
+		return item;
 	},
 
 	get: function(id) {
@@ -54,7 +63,7 @@ $.extend(Collection.prototype, $.Del, {
 		return items;
 	},
 
-	has: function(el) {
+	find: function(el) {
 		var isJQuery = el instanceof $;
 		return this.filter(function(item) {
 			if (isJQuery) return !!item.$el.find(el).length;
@@ -62,8 +71,8 @@ $.extend(Collection.prototype, $.Del, {
 		});
 	},
 
-	hasOne: function(el) {
-		var items = this.has(el);
+	findOne: function(el) {
+		var items = this.find(el);
 		if (items.length) return items[0];
 		return null;
 	}
