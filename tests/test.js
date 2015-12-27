@@ -23,6 +23,7 @@ Collection.extend(MyCollection);
 
 function getCollection () {
 	var $el = getEl();
+	$tests.html($el);
 	var collection = MyCollection.make($el, 'collection');
 	collection.initCollection({
 		dName: 'collection__i',
@@ -30,6 +31,10 @@ function getCollection () {
 	});
 	return collection;
 }
+
+beforeEach(function() {
+	$tests.empty();
+});
 
 describe('Collection', function() {
 	it('extend', function() {
@@ -108,10 +113,11 @@ describe('Collection', function() {
 
 	it('remove', function() {
 		var collection = getCollection();
-		var item = collection._items[Object.keys(collection._items)[3]];
+		var item = collection.getByIndex(3);
 		collection.remove(item);
-		assert(collection._items[3] === undefined);
+		assert(collection.getByIndex(3) === undefined);
 		assert(collection.getByEl(item.$el[0]) === null);
+		assert(!$(document).find(item.el).length);
 	});
 
 	it('getByIndex', function() {
