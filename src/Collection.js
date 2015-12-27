@@ -36,7 +36,7 @@ $.extend(Collection.prototype, $.Del, {
 	},
 
 	pushHtml: function(html) {
-		var item = this.makeFromHtml(html);
+		var item = this._Item.makeFromHtml(html, this._itemDName, this._Item);
 		this.add(item);
 		return item;
 	},
