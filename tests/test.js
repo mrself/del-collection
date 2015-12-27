@@ -98,6 +98,28 @@ describe('Collection', function() {
 		var item = collection.pushHtml('<div class="item"></div>');
 		assert(item.prop === 1);
 	});
+
+	it('getByEl', function() {
+		var collection = getCollection();
+		var el = collection._itemsEl.eq(3)[0];
+		var item = collection.getByEl(el);
+		assert(item.el === el);
+	});
+
+	it('remove', function() {
+		var collection = getCollection();
+		var item = collection._items[Object.keys(collection._items)[3]];
+		collection.remove(item);
+		assert(collection._items[3] === undefined);
+		assert(collection.getByEl(item.$el[0]) === null);
+	});
+
+	it('getByIndex', function() {
+		var collection = getCollection();
+		var el = collection.getEl(4)[0];
+		var item = collection.getByIndex(4);
+		assert(item.el === el);
+	});
 });
 
 function getItem () {
