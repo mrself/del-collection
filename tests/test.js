@@ -111,6 +111,14 @@ describe('Collection', function() {
 		var item = collection._items[Object.keys(collection._items)[3]];
 		collection.remove(item);
 		assert(collection._items[3] === undefined);
+		assert(collection.getByEl(item.$el[0]) === null);
+	});
+
+	it('getByIndex', function() {
+		var collection = getCollection();
+		var el = collection.getEl(4)[0];
+		var item = collection.getByIndex(4);
+		assert(item.el === el);
 	});
 });
 

@@ -18,6 +18,14 @@ $.extend(Collection.prototype, $.Del, {
 		});
 	},
 
+	getEls: function(index) {
+		return this._itemsEl.eq(index);
+	},
+
+	getEl: function(index) {
+		return this._itemsEl.eq(index);
+	},
+
 	make: function(el) {
 		var item = this._Item.make(el, this._itemDName, this._Item);
 		item.initItem();
@@ -43,6 +51,10 @@ $.extend(Collection.prototype, $.Del, {
 
 	get: function(id) {
 		return this._items[id];
+	},
+
+	getByIndex: function(index) {
+		return this._items[Object.keys(this._items)[index]];
 	},
 
 	getByEl: function(el) {
