@@ -92,6 +92,12 @@ describe('Collection', function() {
 		var id = $el.attr('id');
 		assert(collection.get(id).$el[0] == $el[0]);
 	});
+
+	it('pushHtml', function() {
+		var collection = getCollection();
+		var item = collection.pushHtml('<div class="item"></div>');
+		assert(item.prop === 1);
+	});
 });
 
 function getItem () {
