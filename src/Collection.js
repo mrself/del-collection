@@ -47,6 +47,7 @@ $.extend(Collection.prototype, $.Del, {
 
 	each: function(cb) {
 		for (var item in this._items) {
+			if (!this._items[item]) continue;
 			if (cb(this._items[item]) === false) break;
 		}
 	},
@@ -69,6 +70,11 @@ $.extend(Collection.prototype, $.Del, {
 			if (isJQuery) return !!item.$el.find(el).length;
 			return $.contains(item.el, el);
 		});
+	},
+
+	remove: function(item) {
+		this._items[item.getId()] = undefined;
+		this._itemsEl = this._itemsEl.not(item.el);
 	},
 
 	findOne: function(el) {

@@ -98,6 +98,13 @@ describe('Collection', function() {
 		var item = collection.pushHtml('<div class="item"></div>');
 		assert(item.prop === 1);
 	});
+
+	it('remove', function() {
+		var collection = getCollection();
+		var item = collection._items[Object.keys(collection._items)[3]];
+		collection.remove(item);
+		assert(collection._items[3] === undefined);
+	});
 });
 
 function getItem () {
