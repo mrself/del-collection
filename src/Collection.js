@@ -5,7 +5,7 @@ function Collection() {
 }
 Collection.Item = Item;
 
-$.extend(Collection.prototype, $.Del, {
+$.extend(Collection.prototype, {
 	initCollection: function(options) {
 		var self = this;
 

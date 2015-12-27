@@ -3,7 +3,7 @@ function Item() {
 }
 
 var GuIdCounter = 0;
-$.extend(Item.prototype, $.Del, {
+$.extend(Item.prototype, {
 	initItem: function() {
 		// this.initDel();
 	},
