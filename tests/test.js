@@ -99,6 +99,13 @@ describe('Collection', function() {
 		assert(item.prop === 1);
 	});
 
+	it('getByEl', function() {
+		var collection = getCollection();
+		var el = collection._itemsEl.eq(3)[0];
+		var item = collection.getByEl(el);
+		assert(item.el === el);
+	});
+
 	it('remove', function() {
 		var collection = getCollection();
 		var item = collection._items[Object.keys(collection._items)[3]];

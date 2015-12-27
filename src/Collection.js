@@ -45,6 +45,14 @@ $.extend(Collection.prototype, $.Del, {
 		return this._items[id];
 	},
 
+	getByEl: function(el) {
+		var items = this.filter(function(item) {
+			return item.el === el;
+		});
+		if (items.length) return items[0];
+		return null;
+	},
+
 	each: function(cb) {
 		for (var item in this._items) {
 			if (!this._items[item]) continue;
